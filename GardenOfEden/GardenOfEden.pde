@@ -1,3 +1,5 @@
+import controlP5.*;
+
 /**********************************************************************************************
 *
 *              Title - Garden of Eden         Date - June 24, 2014.
@@ -22,11 +24,11 @@
 *************************************************************************************************/
 
 /*** Settings ***/
-final boolean DISPLAY_NORMALS = false;       // Display normals of the landscape on the screen
-final boolean DISPLAY_WINDFIELD = false;      // Display the directions of the wind
-final boolean DISPLAY_BALL_NORMAL = false;   // Display the normal of bals, vectors of the directions and speeds of the balls
-final boolean GRAVITY_SUN_AND_MOON = true;   // Moon and sun have gravitational forces on balls
-final int AMOUNT_BALLS_WITH_THRUSTERS = 1;   // Number of controllable balls
+boolean DISPLAY_NORMALS = false;       // Display normals of the landscape on the screen
+boolean DISPLAY_WINDFIELD = false;      // Display the directions of the wind
+boolean DISPLAY_BALL_NORMAL = false;   // Display the normal of bals, vectors of the directions and speeds of the balls
+boolean GRAVITY_SUN_AND_MOON = true;   // Moon and sun have gravitational forces on balls
+int AMOUNT_BALLS_WITH_THRUSTERS = 1;   // Number of controllable balls
 final int START_AMOUNT_BALLS = 1;            // Number of balls at start
 
 /*** Variables ***/
@@ -58,6 +60,44 @@ void setup() {
   // Generate a terrain and background
   terrainConstruct();
   backgroundConstruct();
+  
+  
+  
+  //GUI
+  ControlP5 cp5 = new ControlP5(this);
+  
+  cp5.addToggle("DISPLAY_NORMALS")
+   .setCaptionLabel("DISPLAY_NORMALS")
+     .setPosition(40,80)
+     .setSize(50,20)
+     .setMode(ControlP5.SWITCH);
+  cp5.addToggle("DISPLAY_WINDFIELD")
+   .setCaptionLabel("DISPLAY_WINDFIELD")
+     .setPosition(40,120)
+     .setSize(50,20)
+     .setMode(ControlP5.SWITCH);
+  cp5.addToggle("DISPLAY_BALL_NORMAL")
+   .setCaptionLabel("DISPLAY_BALL_NORMAL")
+     .setPosition(40,160)
+     .setSize(50,20)
+     .setMode(ControlP5.SWITCH);
+  cp5.addToggle("GRAVITY_SUN_AND_MOON")
+   .setCaptionLabel("GRAVITY_SUN_AND_MOON")
+     .setPosition(40,200)
+     .setSize(50,20)
+     .setMode(ControlP5.SWITCH);
+
+  cp5.addNumberbox("AMOUNT_BALLS_WITH_THRUSTERS")
+    .setCaptionLabel("Amount WASD controlled balls")
+     .setPosition(40,240)
+     .setSize(100,20)
+     .setRange(0,100)
+     .setMultiplier(1) // set the sensitifity of the numberbox
+     .setDirection(Controller.HORIZONTAL) // change the control direction to left/right
+     ;
+
+
+
 }
 
 void draw() {
