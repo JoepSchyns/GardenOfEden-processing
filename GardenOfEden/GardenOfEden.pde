@@ -28,7 +28,7 @@ boolean DISPLAY_NORMALS = false;       // Display normals of the landscape on th
 boolean DISPLAY_WINDFIELD = false;      // Display the directions of the wind
 boolean DISPLAY_BALL_NORMAL = false;   // Display the normal of bals, vectors of the directions and speeds of the balls
 boolean GRAVITY_SUN_AND_MOON = true;   // Moon and sun have gravitational forces on balls
-int AMOUNT_BALLS_WITH_THRUSTERS = 1;   // Number of controllable balls
+final int AMOUNT_BALLS_WITH_THRUSTERS = 1;   // Number of controllable balls
 final int START_AMOUNT_BALLS = 1;            // Number of balls at start
 
 /*** Variables ***/
@@ -87,17 +87,6 @@ void setup() {
      .setSize(50,20)
      .setMode(ControlP5.SWITCH);
 
-  cp5.addNumberbox("AMOUNT_BALLS_WITH_THRUSTERS")
-    .setCaptionLabel("Amount WASD controlled balls")
-     .setPosition(40,240)
-     .setSize(100,20)
-     .setRange(0,100)
-     .setMultiplier(1) // set the sensitifity of the numberbox
-     .setDirection(Controller.HORIZONTAL) // change the control direction to left/right
-     ;
-
-
-
 }
 
 void draw() {
@@ -115,6 +104,7 @@ void draw() {
   // Print the framerate 
   println("FPS : " + frameRate);
 }
+
 
 //boolean sketchFullScreen() {
 //  return true;
